@@ -1,0 +1,8 @@
+forces/newForces.C
+phaseChangeTwoPhaseMixture/myPhaseChangeTwoPhaseMixture.C
+phaseChangeTwoPhaseMixture/myNewPhaseChangeTwoPhaseMixture.C
+schnerrSauerModel/newSchnerrSauer.C
+zwartModel/Zwart.C
+simpleFoamWithPhaseChangeTwoPhaseMixture.C
+
+EXE = $(FOAM_USER_APPBIN)/simpleFoamWithPhaseChangeTwoPhaseMixture

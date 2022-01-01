@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd constant/polyMesh
+m4 blockMeshDict.m4 > blockMeshDict
+cd ../..
+blockMesh
+simpleFoamWithPhaseChangeTwoPhaseMixture >log	
+
+#------------------------------------------------------------------------------

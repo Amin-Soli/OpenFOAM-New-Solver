@@ -1,0 +1,57 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.1                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+phases (water vapour);
+
+phaseChangeTwoPhaseMixture newSchnerrSauer;
+//phaseChangeTwoPhaseMixture Zwart;
+
+pSat            [1 -1 -2 0 0 0 0] 2300;   // Saturation pressure
+
+alfaCoeffDiffusion            alfaCoeffDiffusion  [0 2 -1 0 0 0 0] 1e-05; // for better stability of alfa equation
+
+water  // give vapour properties
+{
+    transportModel Newtonian;
+    nu             nu  [0 2 -1 0 0 0 0] 4.273e-04;  // kinematic viscosity of vapour 
+    rho            rho [1 -3 0 0 0 0 0] 0.02308;   //density of vapour
+}
+
+vapour // give water properties
+{
+    transportModel Newtonian;
+    nu             nu  [0 2 -1 0 0 0 0] 9e-07;    // kinematic viscosity of water
+    rho            rho [1 -3 0 0 0 0 0] 1000;     // density of water
+}
+
+newSchnerrSauerCoeffs
+{
+    n               n      [0 -3 0 0 0 0 0]     1.6e+13;
+    dNuc            dNuc   [0 1 0 0 0 0 0]      2.0e-06;
+    Cc              Cc     [0 0 0 0 0 0 0]      1;
+    Cv              Cv     [0 0 0 0 0 0 0]      1;
+}
+
+ZwartCoeffs
+{
+    Rb              Rb      [0 1 0 0 0 0 0]      1.0e-6;
+    rNuc            rNuc    [0 0 0 0 0 0 0]      5.0e-04;
+    Cc              Cc      [0 0 0 0 0 0 0]      0.01;
+    Cv              Cv      [0 0 0 0 0 0 0]      50;
+}
+
+
+// ************************************************************************* //
